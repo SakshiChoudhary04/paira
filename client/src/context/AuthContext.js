@@ -22,19 +22,29 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = useCallback(async (email, password) => {
-    const { data } = await api.post('/auth/login', { email, password });
-    localStorage.setItem('paira_token', data.token);
-    localStorage.setItem('paira_user', JSON.stringify(data.user));
-    setUser(data.user);
-    return data;
+    try {
+      const { data } = await api.post('/auth/login', { email, password });
+      localStorage.setItem('paira_token', data.token);
+      localStorage.setItem('paira_user', JSON.stringify(data.user));
+      setUser(data.user);
+      return data;
+    } catch (error) {
+      console.error('Login error:', error.response?.data || error.message);
+      throw error;
+    }
   }, []);
 
   const register = useCallback(async (name, email, password) => {
-    const { data } = await api.post('/auth/register', { name, email, password });
-    localStorage.setItem('paira_token', data.token);
-    localStorage.setItem('paira_user', JSON.stringify(data.user));
-    setUser(data.user);
-    return data;
+    try {
+      const { data } = await api.post('/auth/register', { name, email, password });
+      localStorage.setItem('paira_token', data.token);
+      localStorage.setItem('paira_user', JSON.stringify(data.user));
+      setUser(data.user);
+      return data;
+    } catch (error) {
+      console.error('Register error:', error.response?.data || error.message);
+      throw error;
+    }
   }, []);
 
   const logout = useCallback(() => {
