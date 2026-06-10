@@ -1,10 +1,7 @@
 import axios from 'axios';
 
-// Production API: https://paira-fl4j.onrender.com/api
-console.log('API_BASE_URL:', process.env.REACT_APP_API_BASE_URL);
-
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || '/api',
+  baseURL: 'https://paira-fl4j.onrender.com/api',
 });
 
 // Attach token to every request
