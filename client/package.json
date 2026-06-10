@@ -13,7 +13,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
-  "proxy": "https://paira-fl4j.onrender.com/",
   "browserslist": {
     "production": [
       ">0.2%",
