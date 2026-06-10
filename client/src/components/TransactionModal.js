@@ -15,6 +15,7 @@ export default function TransactionModal({ open, onClose, editTx }) {
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
+
     if (open) {
       if (editTx) {
         setType(editTx.type);
